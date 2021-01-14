@@ -22,14 +22,26 @@ export TOPDIR SDKDIR BUILDIR
 
 -include .config
 
+CPU = $(patsubst "%",%,$(CONFIG_CPU_CORE))
+CORE = -mcpu=$(CPU) -mthumb -mfloat-abi=soft
+DEFINITIONS = $(patsubst "%",%,$(CONFIG_MCU_SERIES)) \
+			  USE_HAL_DRIVER
+
 INC := .
 INC += $(TOPDIR)
 INC += $(SDKDIR)
 INC += $(SDKDIR)/CMSIS/Include
+ifeq ($(CONFIG_HAL_LIB_F1),y)
+INC += $(SDKDIR)/CMSIS/Device/ST/STM32F1xx/Include
+INC += $(SDKDIR)/STM32F1xx_HAL_Driver/Inc
+else
 INC += $(SDKDIR)/CMSIS/Device/ST/STM32F4xx/Include
 INC += $(SDKDIR)/STM32F4xx_HAL_Driver/Inc
+endif
 
-CFLAGS := -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DDEBUG -DSTM32F429xx $(addprefix -I,$(INC))
+CFLAGS := $(CORE) \
+	$(addprefix -D,$(DEFINITIONS)) \
+	-std=gnu11 -g3 $(addprefix -I,$(INC))
 export CFLAGS
 
 # Use := to avoid recusive issue
@@ -41,6 +53,9 @@ all: start_recursive_build
 
 start_recursive_build:
 	make -C ./ -f $(TOPDIR)/Makefile.build
+
+menuconfig:
+	@$(MAKE) -f scripts/Makefile $@
 
 clean:
 	rm -f $(shell find -name "*.o")
