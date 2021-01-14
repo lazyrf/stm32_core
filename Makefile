@@ -47,6 +47,7 @@ export CFLAGS
 # Use := to avoid recusive issue
 obj-y :=
 obj-y += sdk/
+obj-y += startup/
 
 all: start_recursive_build
 	@echo $(PROJ_NAME) has been build!
