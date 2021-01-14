@@ -1,0 +1,1 @@
+obj-y += STM32F4xx_HAL_Driver/
