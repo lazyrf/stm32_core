@@ -56,7 +56,8 @@ all: chkconfig start_recursive_build
 	@echo $(LIB_NAME) has been build!
 
 chkconfig:
-	@test -f .config || $(MAKE) -f scripts/Makefile menuconfig
+	@test -f .config || (echo conifg is not found; exit 1)
+	# @test -f .config || (echo .conifg is not found; exit 1)$(MAKE) -f scripts/Makefile menuconfig
 
 start_recursive_build:
 	make -C ./ -f $(TOPDIR)/Makefile.build
