@@ -53,7 +53,7 @@ obj-y += sdk/
 obj-y += startup/
 
 all: chkconfig start_recursive_build
-	@echo $(PROJ_NAME) has been build!
+	@echo $(LIB_NAME) has been build!
 
 chkconfig:
 	@test -f .config || $(MAKE) -f scripts/Makefile menuconfig
@@ -67,4 +67,11 @@ menuconfig:
 clean:
 	rm -f $(shell find -name "*.o")
 	rm -f $(shell find -name "*.d")
+
+distclean:
+	rm -f $(shell find -name "*.o")
+	rm -f $(shell find -name "*.d")
+	rm -f .config
+	rm -f .config.old
+	rm -f config.h
 
