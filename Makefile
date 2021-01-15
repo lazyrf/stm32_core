@@ -52,8 +52,11 @@ obj-y :=
 obj-y += sdk/
 obj-y += startup/
 
-all: start_recursive_build
+all: chkconfig start_recursive_build
 	@echo $(PROJ_NAME) has been build!
+
+chkconfig:
+	@test -f .config || $(MAKE) -f scripts/Makefile menuconfig
 
 start_recursive_build:
 	make -C ./ -f $(TOPDIR)/Makefile.build
