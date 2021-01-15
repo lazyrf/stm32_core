@@ -41,7 +41,10 @@ endif
 
 CFLAGS := $(CORE) \
 	$(addprefix -D,$(DEFINITIONS)) \
-	-std=gnu11 -g3 $(addprefix -I,$(INC))
+	-std=gnu11 -g0 $(addprefix -I,$(INC)) \
+	-ffunction-sections -fdata-sections \
+	-u_scanf_float -u_printf_float \
+	--specs=nosys.specs
 export CFLAGS
 
 # Use := to avoid recusive issue
