@@ -40,7 +40,6 @@ $(subdir-y):
 
 $(OUTPATH)/built-in.o: $(cur_objs) $(subdir_objs)
 	$(LD) -r -o $@ $^
-	@-rm -f $(subdir_objs)
 
 dep_file = $(basename $@).d
 
