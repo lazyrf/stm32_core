@@ -6,7 +6,8 @@ CC 				:= $(CROSS_COMPILE)gcc
 LD 				:= $(CROSS_COMPILE)ld
 AS 				:= $(CROSS_COMPILE)as
 CPP 			:= $(CC) -E
-AR  			:= $(CROSS_COMPILE)nm
+AR  			:= $(CROSS_COMPILE)ar
+NM 				:= $(CORSS_COMPILE)nm
 STRIP 			:= $(CROSS_COMPILE)strip
 OBJCOPY 		:= $(CROSS_COMPILE)objcopy
 OBJDUMP 		:= $(CROSS_COMPILE)objdump
@@ -53,7 +54,7 @@ obj-y :=
 obj-y += sdk/
 obj-y += startup/
 
-all: chkconfig start_recursive_build
+all: chkconfig start_recursive_build gen_static_lib
 	@echo $(LIB_NAME) has been build!
 
 chkconfig:
@@ -62,6 +63,9 @@ chkconfig:
 
 start_recursive_build:
 	make -C ./ -f $(TOPDIR)/Makefile.build
+
+gen_static_lib:
+	@$(AR) crv libstcore.a $(BUILDIR)/built-in.o
 
 menuconfig:
 	@$(MAKE) -f scripts/Makefile $@
