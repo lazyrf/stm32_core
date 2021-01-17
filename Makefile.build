@@ -7,16 +7,22 @@ EXTRA_CFLAGS :=
 
 include Makefile
 
+ifneq ($(notdir $(shell pwd)),$(TOPDIRNAME))
+OUTPATH := $(BUILDIR)/$(shell pwd | sed "s/.*$(TOPDIRNAME)\///")
+else
+OUTPATH := $(BUILDIR)
+endif
+
 # obj-y := a.o b.o c/ d/
 # $(filter %/, $(obj-y))   : c/ d/
 # subdir-y    : c d
 subdir-y += $(patsubst %/, %, $(filter %/, $(obj-y)))
 
 # c/built-in.o d/built-in.o
-subdir_objs := $(foreach f, $(subdir-y), $(f)/built-in.o)
+subdir_objs := $(foreach f, $(subdir-y), $(OUTPATH)/$(f)/built-in.o)
 
 # a.o b.o
-cur_objs := $(filter-out %/, $(obj-y))
+cur_objs := $(addprefix $(OUTPATH)/,$(filter-out %/, $(obj-y)))
 dep_files := $(cur_objs:%.o=%.d)
 # Check whether these dep files exist in current directory
 dep_files := $(wildcard $(dep_files))
@@ -27,21 +33,23 @@ endif
 
 PHONY += $(subdir-y)
 
-__build: $(subdir-y) built-in.o
+__build: $(subdir-y) $(OUTPATH)/built-in.o
 
 $(subdir-y):
 	make -C $@ -f $(TOPDIR)/Makefile.build
 
-built-in.o: $(cur_objs) $(subdir_objs)
+$(OUTPATH)/built-in.o: $(cur_objs) $(subdir_objs)
 	$(LD) -r -o $@ $^
 	@-rm -f $(subdir_objs)
 
 dep_file = $(basename $@).d
 
-%.o: %.c
+$(OUTPATH)/%.o: %.c
+	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(CFLAGS_$@) -Wp,-MD,$(dep_file) -c -o $@ $<
 
-%.o: %.s
+$(OUTPATH)/%.o: %.s
+	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(CFLAGS_$@) -Wp,-MD,$(dep_file) -c -o $@ $<
 
 .PHONY: $(PHONY)

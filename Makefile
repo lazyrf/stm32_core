@@ -14,9 +14,10 @@ SIZE 			:= $(CROSS_COMPILE)siesz
 export CC LD AS CPP AR STRIP OBJCOPY OBJDUMP SIZE
 
 TOPDIR 			:= $(shell pwd)
+TOPDIRNAME 		:= $(notdir $(shell pwd))
 SDKDIR 			:= $(TOPDIR)/sdk
 BUILDIR 		:= $(TOPDIR)/build
-export TOPDIR SDKDIR BUILDIR
+export TOPDIR TOPDIRNAME SDKDIR BUILDIR
 
 .PHONY: all clean distclean
 
