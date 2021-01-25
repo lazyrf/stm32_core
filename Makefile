@@ -71,12 +71,12 @@ menuconfig:
 	@$(MAKE) -f scripts/Makefile $@
 
 clean:
-	rm *.a
+	rm -f *.a
 	rm -f $(shell find -name "*.o")
 	rm -f $(shell find -name "*.d")
 
 distclean:
-	rm *.a
+	rm -f *.a
 	rm -f $(shell find -name "*.o")
 	rm -f $(shell find -name "*.d")
 	rm -f .config
