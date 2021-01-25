@@ -4,7 +4,7 @@ mainmenu "STM32 Core Configuration"
         # Core option
         choice CPU_CORE
             prompt "CPU Core"
-            default CPU_CORE_CM3
+            default CPU_CORE_CM4
             help
                 Cortex-M3
                 Cortex-M4
@@ -24,7 +24,7 @@ mainmenu "STM32 Core Configuration"
         # MCU series
         choice MCU_SERIES
             prompt "MCU series"
-            default MCU_SERIES_STM32F103xB
+            default MCU_SERIES_STM32F429xx
 
             config MCU_SERIES_STM32F429xx
                 bool "STM32F429xx"
@@ -47,6 +47,8 @@ mainmenu "STM32 Core Configuration"
         config HAL_LIB_F4
             bool
             default y if MCU_SERIES_STM32F429xx
+
+        source "Kconfig.periph"
     endmenu
 
     menu "Compiler"
@@ -244,7 +246,7 @@ mainmenu "STM32 Core Configuration"
         # Warning switch enum
         config GCC_FLAG_WARNING_SWITCH_ENUM
             bool "-Wswitch-enum"
-            default y
+            default n
             help
                 Warn whenever a switch statement has an index of enumerated type and lacks a case for one or more of the named codes of that enumeration
 

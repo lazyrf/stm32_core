@@ -1,0 +1,257 @@
+menu "Peripheral"
+	config MCU_PERIPH_ADC
+		bool "ADC"
+		default n
+
+	config MCU_PERIPH_CAN
+		bool "CAN"
+		default n
+
+	config MCU_PERIPH_CEC
+		bool "CEC"
+		default n
+
+	config MCU_PERIPH_CRC
+		bool "CRC"
+		default y
+
+	config MCU_PERIPH_CRYP
+		bool "CRPY"
+		default n
+
+	config MCU_PERIPH_DAC
+		bool "DAC"
+		default n
+
+	config MCU_PERIPH_DBGMCU
+		bool "DBGMCU"
+		default n
+
+	config MCU_PERIPH_DCMI
+		bool "DCMI"
+		default n
+
+	config MCU_PERIPH_DFSDM
+		bool "DFSDM"
+		default n
+
+	config MCU_PERIPH_DMA
+		bool "DMA"
+		default y
+
+	config MCU_PERIPH_DMA2D
+		bool "DMA2D"
+		default n
+
+	config MCU_PERIPH_DSI
+		bool "DSI"
+		default n
+
+	config MCU_PERIPH_EXTI
+		bool "EXTI"
+		default y
+
+	config MCU_PERIPH_FLASH
+		bool "FLASH"
+		default y
+
+	config MCU_PERIPH_FMC
+		bool "FMC"
+		default n
+
+	config MCU_PERIPH_FMPI2C
+		bool "FMPI2C"
+		default n
+
+	config MCU_PERIPH_FSMC
+		bool "FSMC"
+		default n
+
+	config MCU_PERIPH_GPIO
+		bool "GPIO"
+		default y
+
+	config MCU_PERIPH_HASH
+		bool "HASH"
+		default n
+
+	config MCU_PERIPH_I2C
+		bool "I2C"
+		default y
+
+	config MCU_PERIPH_IWDG
+		bool "IWDG"
+		default y
+
+	config MCU_PERIPH_LPTIME
+		bool "LPTIME"
+		default n
+
+	config MCU_PERIPH_LTDC
+		bool "LTDC"
+		default n
+
+	config MCU_PERIPH_PWR
+		bool "PWR"
+		default y
+
+	config MCU_PERIPH_QSPI
+		bool "QSPI"
+		default n
+
+	config MCU_PERIPH_RCC
+		bool "RCC"
+		default y
+
+	config MCU_PERIPH_RNG
+		bool "RNG"
+		default n
+
+	config MCU_PERIPH_RTC
+		bool "RTC"
+		default y
+
+	config MCU_PERIPH_SAI
+		bool "SAI"
+		default n
+
+	config MCU_PERIPH_SDIO
+		bool "SDIO"
+		default y
+
+	config MCU_PERIPH_SPDIFRX
+		bool "SPDIFRX"
+		default n
+
+	config MCU_PERIPH_SPI
+		bool "SPI"
+		default y
+
+	config MCU_PERIPH_SYSCFG
+		bool "SYSCFG"
+		default y
+
+	config MCU_PERIPH_TIM
+		bool "TIM"
+		default y
+
+	config MCU_PERIPH_USART
+		bool "USART"
+		default y
+
+	config MCU_PERIPH_UART
+		bool "UART"
+		default y
+
+	config MCU_PERIPH_WWDG
+		bool "WWDG"
+		default n
+
+    config MCU_PERIPH_ETH
+        bool "Ethernet"
+        default n
+
+    config MCU_PERIPH_I2S
+        bool "I2S"
+        default n
+
+    config MCU_PERIPH_IRDA
+        bool "IRDA"
+        default n
+
+    config MCU_PERIPH_NOR
+        bool "NOR"
+        default n
+
+    config MCU_PERIPH_NAND
+        bool "NAND"
+        default n
+
+    config MCU_PERIPH_PCCARD
+        bool "PCCARD"
+        default n
+
+    config MCU_PERIPH_PCD
+        bool "PCD"
+        default n
+
+    config MCU_PERIPH_HCD
+        bool "HCD"
+        default n
+
+    config MCU_PERIPH_SD
+        bool "SD"
+        default n
+
+    config MCU_PERIPH_MMC
+        bool "MMC"
+        default n
+
+    config MCU_PERIPH_SDRAM
+        bool "SDRAM"
+        default n
+
+    config MCU_PERIPH_SMARTCARD
+        bool "SMARTCARD"
+        default n
+
+    config MCU_PERIPH_SRAM
+        bool "SRAM"
+        default n
+
+    config MCU_PERIPH_DCMI
+        bool "DCMI"
+        default n
+
+    config MCU_PERIPH_DMA2D
+        bool "DMA2D"
+        default n
+
+    config MCU_PERIPH_HASH
+        bool "HAS"
+        default n
+
+    config MCU_PERIPH_LTDC
+        bool "LTDC"
+        default n
+
+    config MCU_PERIPH_RNG
+        bool "RNG"
+        default n
+
+    config MCU_PERIPH_SAI
+        bool "SAI"
+        default n
+
+    config MCU_PERIPH_SMBUS
+        bool "SMBUS"
+        default n
+
+    config MCU_PERIPH_DSI
+        bool "DSI"
+        default n
+
+    config MCU_PERIPH_QSPI
+        bool "QSPI"
+        default n
+
+    config MCU_PERIPH_CEC
+        bool "CEC"
+        default n
+
+    config MCU_PERIPH_FMPI2C
+        bool "FMPI2C"
+        default n
+
+    config MCU_PERIPH_SPDIFRX
+        bool "SPDIFRX"
+        default n
+
+    config MCU_PERIPH_DFSDM
+        bool "DFSDM"
+        default n
+
+    config MCU_PERIPH_LPTIM
+        bool "LPTIM"
+        default n
+endmenu
