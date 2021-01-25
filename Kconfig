@@ -48,3 +48,229 @@ mainmenu "STM32 Core Configuration"
             bool
             default y if MCU_SERIES_STM32F429xx
     endmenu
+
+    menu "Compiler"
+        # Debug option
+        choice GCC_DEBUG_LEVEL
+            prompt "Debug Level"
+            default GCC_DEBUG_LEVEL_0
+            help
+                -g Debug information depend on OS (stabs, COFF, XCOFF or DWARF)
+                -g0 No debug information
+                -g1 Minimal debug information
+                -g3 Maximum debug information
+
+            config GCC_DEBUG_LEVEL_DEPEND_ON_OS
+                bool "-g"
+
+            config GCC_DEBUG_LEVEL_0
+                bool "-g0"
+
+            config GCC_DEBUG_LEVEL_1
+                bool "-g1"
+
+            config GCC_DEBUG_LEVEL_3
+                bool "-g3"
+        endchoice
+
+        config GCC_DEBUG_LEVEL
+            string
+            default "-g" if GCC_DEBUG_LEVEL_DEPEND_ON_OS
+            default "-g0" if GCC_DEBUG_LEVEL_0
+            default "-g1" if GCC_DEBUG_LEVEL_1
+            default "-g3" if GCC_DEBUG_LEVEL_3
+
+        # C standard
+        choice GCC_C_STANDARD
+            prompt "C Standard"
+            default GCC_C_STD_GNU11
+
+            config GCC_C_STD_C90
+                bool "c90"
+
+            config GCC_C_STD_GNU90
+                bool "gnu90"
+
+            config GCC_C_STD_C99
+                bool "c99"
+
+            config GCC_C_STD_GNU99
+                bool "gnu99"
+
+            config GCC_C_STD_C11
+                bool "c11"
+
+            config GCC_C_STD_GNU11
+                bool "gnu11"
+        endchoice
+
+        config GCC_C_STANDARD
+            string
+            default "c90" if GCC_C_STD_C90
+            default "c99" if GCC_C_STD_C99
+            default "c11" if GCC_C_STD_C11
+            default "gnu90" if GCC_C_STD_GNU90
+            default "gnu99" if GCC_C_STD_GNU99
+            default "gnu11" if GCC_C_STD_GNU11
+
+        # Optimization Level
+        choice GCC_OPTIMIZATION_LEVEL
+            prompt "Optimization Level"
+            default GCC_OPTIMIZATION_LEVEL_0
+            help
+                -Og Standard edit-compile-debug cycle
+                -O0 Without optimization
+                -O1 Compiler tries to reduce code size and execution time
+                -O2 Compiler performs nearly all supported optimizations
+                -O3 TUrn on all optimizations
+                -Os Optimization for size
+
+            config GCC_OPTIMIZATION_LEVEL_G
+                bool "-Og"
+
+            config GCC_OPTIMIZATION_LEVEL_0
+                bool "-O0"
+
+            config GCC_OPTIMIZATION_LEVEL_1
+                bool "-O1"
+
+            config GCC_OPTIMIZATION_LEVEL_2
+                bool "-O2"
+
+            config GCC_OPTIMIZATION_LEVEL_3
+                bool "-O3"
+
+            config GCC_OPTIMIZATION_LEVEL_S
+                bool "-Os"
+        endchoice
+
+        config GCC_OPTIMIZATION_LEVEL
+            string
+            default "-Og" if GCC_OPTIMIZATION_LEVEL_G
+            default "-O0" if GCC_OPTIMIZATION_LEVEL_0
+            default "-O1" if GCC_OPTIMIZATION_LEVEL_1
+            default "-O2" if GCC_OPTIMIZATION_LEVEL_2
+            default "-O3" if GCC_OPTIMIZATION_LEVEL_3
+            default "-Os" if GCC_OPTIMIZATION_LEVEL_S
+
+        # Data Section
+        config GCC_FLAG_DATA_SECTIONS
+            bool "-fdata-sections"
+            default y
+            help
+                Place data in their own sections
+
+        config GCC_DATA_SECTIONS
+            string
+            default "-fdata-sections" if GCC_FLAG_DATA_SECTIONS && y
+
+        # Function Section
+        config GCC_FLAG_FUNCTION_SECTIONS
+            bool "-ffunction-sections"
+            default y
+            help
+                Place functions in their own sections
+
+        config GCC_FUNCTION_SECTIONS
+            string
+            default "-ffunction-sections" if GCC_FLAG_FUNCTION_SECTIONS && y
+
+        # Stack usage
+        config GCC_FLAG_STACK_USAGE
+            bool "-fstack-usage"
+            default y
+            help
+                A unit compiled with -fstack-usage will generate an extra file that specifies the maximum of stack used, on a per-function basis
+
+        config GCC_STACK_USAGE
+            string
+            default "-fstack-usage" if GCC_FLAG_STACK_USAGE && y
+
+        # Warning all
+        config GCC_FLAG_WARNING_ALL
+            bool "-Wall"
+            default y
+            help
+                This enables all the warnings about constructions that some users consider questionable, and that are easy to avoid (or modify to prevent the warning), even in conjuction with marcos
+
+        config GCC_WARNING_ALL
+            string
+            default "-Wall" if GCC_FLAG_WARNING_ALL && y
+
+        # Warning error
+        config GCC_FLAG_WARNING_ERROR
+            bool "-Werror"
+            default n
+            help
+                Make all warnings into errors
+
+        config GCC_WARNING_ERROR
+            string
+            default "-Werror" if GCC_FLAG_WARNING_ERROR && y
+
+        # Warning extra
+        config GCC_FLAG_WARNING_EXTRA
+            bool "-Wextra"
+            default y
+            help
+                This enables some extra warning flags that are not enabled by -Wall
+
+        config GCC_WARNING_EXTRA
+            string
+            default "-Wextra" if GCC_FLAG_WARNING_EXTRA && y
+
+        # Warning no used parameter
+        config GCC_FLAG_WARNING_NO_UNUSED_PARAMETER
+            bool "-Wno-unused-parameter"
+            default y
+            help
+                Turn off warn whenever a function parameter is unused aside from its declaration
+
+        config GCC_WARNING_NO_UNUSED_PARAMETER
+            string
+            default "-Wno-unused-parameter" if GCC_FLAG_WARNING_NO_UNUSED_PARAMETER && y
+
+        # Warning switch default
+        config GCC_FLAG_WARNING_SWITCH_DEFAULT
+            bool "-Wswitch-default"
+            default n
+            help
+                Warn whenever a switch statement does not have a default case
+
+        config GCC_WARNING_SWITCH_DEFAULT
+            string
+            default "-Wswitch-default" if GCC_FLAG_WARNING_SWITCH_DEFAULT && y
+
+        # Warning switch enum
+        config GCC_FLAG_WARNING_SWITCH_ENUM
+            bool "-Wswitch-enum"
+            default y
+            help
+                Warn whenever a switch statement has an index of enumerated type and lacks a case for one or more of the named codes of that enumeration
+
+        config GCC_WARNING_SWITCH_ENUM
+            string
+            default "-Wswitch-enum" if GCC_FLAG_WARNING_SWITCH_ENUM && y
+
+        # Printf float
+        config GCC_FLAG_USE_PRINTF_FLOAT
+            bool "-u_printf_float"
+            default y
+            help
+                Use float with printf from newlib-nano
+
+        config GCC_USE_PRINTF_FLOAT
+            string
+            default "-u_printf_float" if GCC_FLAG_USE_PRINTF_FLOAT && y
+
+        # Scanf float
+        config GCC_FLAG_USE_SCANF_FLOAT
+            bool "-u_scanf_float"
+            default n
+            help
+                Use float with scanf from newlib-nano
+
+        config GCC_USE_SCANF_FLOAT
+            string
+            default "-u_scanf_float" if GCC_FLAG_USE_SCANF_FLOAT && y
+    endmenu

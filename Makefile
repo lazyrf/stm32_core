@@ -24,8 +24,7 @@ export TOPDIR TOPDIRNAME SDKDIR BUILDIR
 
 -include .config
 
-CPU = $(patsubst "%",%,$(CONFIG_CPU_CORE))
-CORE = -mcpu=$(CPU) -mthumb -mfloat-abi=soft
+CORE = -mcpu=$(patsubst "%",%,$(CONFIG_CPU_CORE)) -mthumb -mfloat-abi=soft
 DEFINITIONS = $(patsubst "%",%,$(CONFIG_MCU_SERIES)) \
 			  USE_HAL_DRIVER
 
@@ -42,11 +41,23 @@ INC += $(SDKDIR)/STM32F4xx_HAL_Driver/Inc
 endif
 
 CFLAGS := $(CORE) \
+	$(addprefix -I,$(INC)) \
 	$(addprefix -D,$(DEFINITIONS)) \
-	-std=gnu11 -g $(addprefix -I,$(INC)) \
-	-ffunction-sections -fdata-sections \
-	--specs=nano.specs \
-	-u_scanf_float -u_printf_float
+	-std=$(patsubst "%",%,$(CONFIG_GCC_C_STANDARD)) \
+	$(patsubst "%",%,$(CONFIG_GCC_OPTIMIZATION_LEVEL)) \
+	$(patsubst "%",%,$(CONFIG_GCC_DEBUG_LEVEL)) \
+	$(patsubst "%",%,$(CONFIG_GCC_USE_PRINTF_FLOAT)) \
+	$(patsubst "%",%,$(CONFIG_GCC_USE_SCANF_FLOAT)) \
+	$(patsubst "%",%,$(CONFIG_GCC_DATA_SECTIONS)) \
+	$(patsubst "%",%,$(CONFIG_GCC_FUNCTION_SECTIONS)) \
+	$(patsubst "%",%,$(CONFIG_GCC_STACK_USAGE)) \
+	$(patsubst "%",%,$(CONFIG_GCC_WARNING_ALL)) \
+	$(patsubst "%",%,$(CONFIG_GCC_WARNING_ERROR)) \
+	$(patsubst "%",%,$(CONFIG_GCC_WARNING_EXTRA)) \
+	$(patsubst "%",%,$(CONFIG_GCC_WARNING_NO_UNUSED_PARAMETER)) \
+	$(patsubst "%",%,$(CONFIG_GCC_WARNING_SWITCH_DEFAULT)) \
+	$(patsubst "%",%,$(CONFIG_GCC_WARNING_SWITCH_ENUM)) \
+	--specs=nano.specs
 export CFLAGS
 
 # Use := to avoid recusive issue
