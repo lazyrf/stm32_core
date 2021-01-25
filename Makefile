@@ -43,14 +43,14 @@ endif
 
 CFLAGS := $(CORE) \
 	$(addprefix -D,$(DEFINITIONS)) \
-	-std=gnu11 -g0 $(addprefix -I,$(INC)) \
+	-std=gnu11 -g $(addprefix -I,$(INC)) \
 	-ffunction-sections -fdata-sections \
-	-u_scanf_float -u_printf_float \
-	--specs=nosys.specs
+	--specs=nano.specs \
+	-u_scanf_float -u_printf_float
 export CFLAGS
 
 # Use := to avoid recusive issue
-obj-y :=
+obj-y := core.o it.o msp.o
 obj-y += sdk/
 obj-y += startup/
 
@@ -59,7 +59,7 @@ all: chkconfig start_recursive_build gen_static_lib
 
 chkconfig:
 	@test -f .config || (echo conifg is not found; exit 1)
-	# @test -f .config || (echo .conifg is not found; exit 1)$(MAKE) -f scripts/Makefile menuconfig
+#	@test -f .config || (echo .conifg is not found; exit 1)$(MAKE) -f scripts/Makefile menuconfig
 
 start_recursive_build:
 	make -C ./ -f $(TOPDIR)/Makefile.build
@@ -71,10 +71,12 @@ menuconfig:
 	@$(MAKE) -f scripts/Makefile $@
 
 clean:
+	rm *.a
 	rm -f $(shell find -name "*.o")
 	rm -f $(shell find -name "*.d")
 
 distclean:
+	rm *.a
 	rm -f $(shell find -name "*.o")
 	rm -f $(shell find -name "*.d")
 	rm -f .config
