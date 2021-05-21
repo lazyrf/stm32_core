@@ -1,3 +1,5 @@
+-include $(TOPDIR)/.config
+
 obj-$(CONFIG_MCU_PERIPH_ADC) += stm32f4xx_hal_adc.o
 obj-$(CONFIG_MCU_PERIPH_ADC) += stm32f4xx_hal_adc_ex.o
 obj-y += stm32f4xx_hal.o
