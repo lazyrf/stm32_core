@@ -2,41 +2,51 @@ mainmenu "STM32 Core Configuration"
 
     menu "MCU"
         # Core option
-        choice CPU_CORE
-            prompt "CPU Core"
-            default CPU_CORE_CM4
+        choice MCU_CORE
+            prompt "MCU Core"
+            default MCU_CORE_CM4
             help
                 Cortex-M3
                 Cortex-M4
 
-            config CPU_CORE_CM3
+            config MCU_CORE_CM3
                 bool "Cortex-M3"
 
-            config CPU_CORE_CM4
+            config MCU_CORE_CM4
                 bool "Cortex-M4"
         endchoice
 
-        config CPU_CORE
+        config MCU_CORE
             string
-            default "cortex-m3" if CPU_CORE_CM3
-            default "cortex-m4" if CPU_CORE_CM4
+            default "cortex-m3" if MCU_CORE_CM3
+            default "cortex-m4" if MCU_CORE_CM4
 
         # MCU series
         choice MCU_SERIES
             prompt "MCU series"
             default MCU_SERIES_STM32F429xx
 
+            config MCU_SERIES_STM32F405xx
+                bool "STM32F405xx"
+                depends on MCU_CORE_CM4
+
+            config MCU_SERIES_STM32F407xx
+                bool "STM32F407xx"
+                depends on MCU_CORE_CM4
+
             config MCU_SERIES_STM32F429xx
                 bool "STM32F429xx"
-                depends on CPU_CORE_CM4
+                depends on MCU_CORE_CM4
 
             config MCU_SERIES_STM32F103xB
                 bool "STM32F103xB"
-                depends on CPU_CORE_CM3
+                depends on MCU_CORE_CM3
         endchoice
 
         config MCU_SERIES
             string
+            default "STM32F405xx" if MCU_SERIES_STM32F405xx
+            default "STM32F407xx" if MCU_SERIES_STM32F407xx
             default "STM32F429xx" if MCU_SERIES_STM32F429xx
             default "STM32F103xB" if MCU_SERIES_STM32F103xB
 
@@ -46,6 +56,8 @@ mainmenu "STM32 Core Configuration"
 
         config HAL_LIB_F4
             bool
+            default y if MCU_SERIES_STM32F405xx
+            default y if MCU_SERIES_STM32F407xx
             default y if MCU_SERIES_STM32F429xx
 
         source "Kconfig.periph"

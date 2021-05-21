@@ -1,5 +1,5 @@
-LIB_NAME 		:= stm32_core
-export PROJ_NAME
+LIB_NAME 		:= libstcore.a
+export LIB_NAME
 
 CROSS_COMPILE  	:= arm-none-eabi-
 CC 				:= $(CROSS_COMPILE)gcc
@@ -24,7 +24,7 @@ export TOPDIR TOPDIRNAME SDKDIR BUILDIR
 
 -include .config
 
-CORE = -mcpu=$(patsubst "%",%,$(CONFIG_CPU_CORE)) -mthumb -mfloat-abi=soft
+CORE = -mcpu=$(patsubst "%",%,$(CONFIG_MCU_CORE)) -mthumb -mfloat-abi=soft
 DEFINITIONS = $(patsubst "%",%,$(CONFIG_MCU_SERIES)) \
 			  USE_HAL_DRIVER
 
@@ -76,7 +76,7 @@ start_recursive_build:
 	make -C ./ -f $(TOPDIR)/Makefile.build
 
 gen_static_lib:
-	@$(AR) crv libstcore.a $(BUILDIR)/built-in.o
+	@$(AR) crv $(LIB_NAME) $(BUILDIR)/built-in.o
 
 menuconfig:
 	@$(MAKE) -f scripts/Makefile $@
