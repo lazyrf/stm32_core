@@ -33,7 +33,13 @@ endif
 
 PHONY += $(subdir-y)
 
-__build: $(subdir-y) $(OUTPATH)/built-in.o
+__build: PRINT_INFO $(subdir-y) $(OUTPATH)/built-in.o
+
+PRINT_INFO:
+	@echo "---------------------------------------------------------------------"
+	@echo "OBJS:" $(cur_objs)
+	@echo "SUBDIR:" $(subdir-y)
+	@echo ""
 
 $(subdir-y):
 	make -C $@ -f $(TOPDIR)/Makefile.build
