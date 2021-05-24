@@ -51,10 +51,10 @@ dep_file = $(basename $@).d
 
 $(OUTPATH)/%.o: %.c
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(CFLAGS_$@) -Wp,-MD,$(dep_file) -c -o $@ $<
+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(CFLAGS_$@) -Wp,-MT,'$@',-MD,$(dep_file) -c -o $@ $<
 
 $(OUTPATH)/%.o: %.s
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(CFLAGS_$@) -Wp,-MD,$(dep_file) -c -o $@ $<
+	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $(CFLAGS_$@) -Wp,-MT,'$@',-MD,$(dep_file) -c -o $@ $<
 
 .PHONY: $(PHONY)
