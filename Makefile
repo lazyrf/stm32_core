@@ -76,7 +76,7 @@ start_recursive_build:
 	make -C ./ -f $(TOPDIR)/Makefile.build
 
 gen_static_lib:
-	@$(AR) crv $(LIB_NAME) $(BUILDIR)/built-in.o
+	@$(AR) cruv $(LIB_NAME) $(shell find $(BUILDIR) -name "*.o")
 
 menuconfig:
 	@$(MAKE) -f scripts/Makefile $@

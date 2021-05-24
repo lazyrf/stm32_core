@@ -18,9 +18,6 @@ endif
 # subdir-y    : c d
 subdir-y += $(patsubst %/, %, $(filter %/, $(obj-y)))
 
-# c/built-in.o d/built-in.o
-subdir_objs := $(foreach f, $(subdir-y), $(OUTPATH)/$(f)/built-in.o)
-
 # a.o b.o
 cur_objs := $(addprefix $(OUTPATH)/,$(filter-out %/, $(obj-y)))
 dep_files := $(cur_objs:%.o=%.d)
@@ -33,7 +30,7 @@ endif
 
 PHONY += $(subdir-y)
 
-__build: PRINT_INFO $(subdir-y) $(OUTPATH)/built-in.o
+__build: PRINT_INFO $(subdir-y) $(cur_objs)
 
 PRINT_INFO:
 	@echo "---------------------------------------------------------------------"
@@ -43,9 +40,6 @@ PRINT_INFO:
 
 $(subdir-y):
 	make -C $@ -f $(TOPDIR)/Makefile.build
-
-$(OUTPATH)/built-in.o: $(cur_objs) $(subdir_objs)
-	$(LD) -r -o $@ $^
 
 dep_file = $(basename $@).d
 
