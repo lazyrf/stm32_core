@@ -11,7 +11,7 @@ NM 				:= $(CORSS_COMPILE)nm
 STRIP 			:= $(CROSS_COMPILE)strip
 OBJCOPY 		:= $(CROSS_COMPILE)objcopy
 OBJDUMP 		:= $(CROSS_COMPILE)objdump
-SIZE 			:= $(CROSS_COMPILE)siesz
+SIZE 			:= $(CROSS_COMPILE)size
 export CC LD AS CPP AR STRIP OBJCOPY OBJDUMP SIZE
 
 TOPDIR 			:= $(shell pwd)
