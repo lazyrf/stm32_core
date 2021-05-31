@@ -33,12 +33,13 @@ PHONY += $(subdir-y)
 __build: PRINT_INFO $(subdir-y) $(cur_objs)
 
 PRINT_INFO:
-	@echo "---------------------------------------------------------------------"
+	@echo ""
 	@echo "OBJS:" $(cur_objs)
 	@echo "SUBDIR:" $(subdir-y)
 	@echo ""
 
 $(subdir-y):
+	@echo "-------------------------------------------------------------------------------------------------"
 	make -C $@ -f $(TOPDIR)/Makefile.build
 
 dep_file = $(basename $@).d
