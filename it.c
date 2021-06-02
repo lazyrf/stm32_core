@@ -1,8 +1,8 @@
 #include "config.h"
 
-#if CONFIG_HAL_LIB_F4
+#if CONFIG_MCU_FAMILY_F4
 #include "stm32f4xx_hal.h"
-#else
+#elif CONFIG_MCU_FAMILY_F1
 #include "stm32f1xx_hal.h"
 #endif
 

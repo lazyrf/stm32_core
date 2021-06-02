@@ -32,10 +32,10 @@ INC := .
 INC += $(TOPDIR)
 INC += $(SDKDIR)
 INC += $(SDKDIR)/CMSIS/Include
-ifeq ($(CONFIG_HAL_LIB_F1),y)
+ifeq ($(CONFIG_MCU_FAMILY_F1),y)
 INC += $(SDKDIR)/CMSIS/Device/ST/STM32F1xx/Include
 INC += $(SDKDIR)/STM32F1xx_HAL_Driver/Inc
-else
+else ifeq ($(CONFIG_MCU_FAMILY_F4),y)
 INC += $(SDKDIR)/CMSIS/Device/ST/STM32F4xx/Include
 INC += $(SDKDIR)/STM32F4xx_HAL_Driver/Inc
 endif

@@ -50,11 +50,11 @@ mainmenu "STM32 Core Configuration"
             default "STM32F429xx" if MCU_SERIES_STM32F429xx
             default "STM32F103xB" if MCU_SERIES_STM32F103xB
 
-        config HAL_LIB_F1
+        config MCU_FAMILY_F1
             bool
             default y if MCU_SERIES_STM32F103xB
 
-        config HAL_LIB_F4
+        config MCU_FAMILY_F4
             bool
             default y if MCU_SERIES_STM32F405xx
             default y if MCU_SERIES_STM32F407xx
