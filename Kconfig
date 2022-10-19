@@ -60,7 +60,9 @@ mainmenu "STM32 Core Configuration"
             default y if MCU_SERIES_STM32F407xx
             default y if MCU_SERIES_STM32F429xx
 
-        source "Kconfig.periph"
+        if MCU_SERIES_STM32F405xx || MCU_SERIES_STM32F407xx || MCU_SERIES_STM32F429xx
+            source "kconfig/Kconfig.periph.f4x"
+        endif
     endmenu
 
     menu "Compiler"

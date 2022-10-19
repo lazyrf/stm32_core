@@ -1,0 +1,12 @@
+menuconfig MCU_PERIPH_GPIO
+    bool "GPIO"
+
+if MCU_PERIPH_GPIO
+menu "Port A"
+    source "kconfig/Kconfig.periph.f4x.gpioa"
+endmenu
+
+menu "Port B"
+    source "kconfig/Kconfig.periph.f4x.gpiob"
+endmenu
+endif

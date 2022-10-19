@@ -1,4 +1,6 @@
 menu "Peripheral"
+    source "kconfig/Kconfig.periph.f4x.gpio"
+
     config MCU_PERIPH_ADC
         bool "ADC"
         default n
@@ -135,9 +137,53 @@ menu "Peripheral"
         bool "TIM"
         default y
 
-    config MCU_PERIPH_USART
+    menuconfig MCU_PERIPH_USART
         bool "USART"
         default y
+
+    if MCU_PERIPH_USART
+        choice MCU_PERIPH_USART1
+            prompt "USART1"
+            default MCU_PERIPH_USART1_DISABLE
+            help
+                PINMAP1 (TX: PA9, RX: PA10)
+                PINMAP2 (TX: PB6, RX: PB7)
+                DISABLE
+
+            config MCU_PERIPH_USART1_PINMAP1
+                bool "TX: PA9, RX: PA10"
+
+            config MCU_PERIPH_USART1_PINMAP2
+                bool "TX: PB6, RX: PB7"
+
+            config MCU_PERIPH_USART1_DISABLE
+                bool "Disable"
+        endchoice
+
+        choice MCU_PERIPH_USART2
+            prompt "USART2"
+            default MCU_PERIPH_USART2_DISABLE
+            help
+                PINMAP1 (TX: PA2, RX: PA3)
+                PINMAP2 (TX: PD5, RX: PD6)
+                DISABLE
+
+            config MCU_PERIPH_USART2_PINMAP1
+                bool "TX: PA9, RX: PA10"
+
+            config MCU_PERIPH_USART2_PINMAP2
+                bool "TX: PB6, RX: PB7"
+
+            config MCU_PERIPH_USART2_DISABLE
+                bool "Disable"
+        endchoice
+
+        config MCU_PERIPH_USART3
+            bool "USART3"
+
+        config MCU_PERIPH_USART6
+            bool "USART6"
+    endif
 
     config MCU_PERIPH_UART
         bool "UART"
