@@ -43,7 +43,7 @@ if MCU_PERIPH_GPIO
             source "kconfig/Kconfig.periph.f4x.gpioj"
         endmenu
 
-        menu "Port J"
+        menu "Port K"
             source "kconfig/Kconfig.periph.f4x.gpiok"
         endmenu
     endif
