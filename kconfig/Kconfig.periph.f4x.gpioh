@@ -1,0 +1,2197 @@
+# PH0
+menuconfig MCU_PERIPH_GPIO_PH0
+    bool "PH0"
+
+if MCU_PERIPH_GPIO_PH0
+    choice MCU_PERIPH_GPIO_PH0_MODE
+        prompt "Mode"
+        help
+            PH0 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH0_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH0_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH0_MODE_OUT_OD
+            bool "Output OD"
+
+        # config MCU_PERIPH_GPIO_PH0_MODE_AF_PP
+            # bool "AF PP"
+
+        # config MCU_PERIPH_GPIO_PH0_MODE_AF_OD
+            # bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH0_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH0_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH0_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH0_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH0_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH0_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH0_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH0_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH0_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH0_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH0_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH0_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH0_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH0_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH0_AF
+        bool
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH0_MODE_AF_OD || MCU_PERIPH_GPIO_PH0_MODE_AF_PP
+        help
+            PH0 GPIO AF
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH0_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH0_AF0
+        default 1 if MCU_PERIPH_GPIO_PH0_AF1
+        default 2 if MCU_PERIPH_GPIO_PH0_AF2
+        default 3 if MCU_PERIPH_GPIO_PH0_AF3
+        default 4 if MCU_PERIPH_GPIO_PH0_AF4
+        default 5 if MCU_PERIPH_GPIO_PH0_AF5
+        default 6 if MCU_PERIPH_GPIO_PH0_AF6
+        default 7 if MCU_PERIPH_GPIO_PH0_AF7
+        default 8 if MCU_PERIPH_GPIO_PH0_AF8
+        default 9 if MCU_PERIPH_GPIO_PH0_AF9
+        default 10 if MCU_PERIPH_GPIO_PH0_AF10
+        default 11 if MCU_PERIPH_GPIO_PH0_AF11
+        default 12 if MCU_PERIPH_GPIO_PH0_AF12
+        default 13 if MCU_PERIPH_GPIO_PH0_AF13
+        default 14 if MCU_PERIPH_GPIO_PH0_AF14
+        default 15 if MCU_PERIPH_GPIO_PH0_AF15
+
+    choice MCU_PERIPH_GPIO_PH0_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH0_PULLNONE
+        help
+            PH0 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH0_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH0_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH0_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH0_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH0_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH0_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH0_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH0_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH0_SPHED_FREQ_LOW
+        help
+            PH0 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH0_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH0_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH0_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH0_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH0_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH0_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH0_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH0_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH0_SPHED_FREQ_VERY_HIGH
+endif
+
+# PH1
+menuconfig MCU_PERIPH_GPIO_PH1
+    bool "PH1"
+
+if MCU_PERIPH_GPIO_PH1
+    choice MCU_PERIPH_GPIO_PH1_MODE
+        prompt "Mode"
+        help
+            PH1 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH1_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH1_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH1_MODE_OUT_OD
+            bool "Output OD"
+
+        # config MCU_PERIPH_GPIO_PH1_MODE_AF_PP
+            # bool "AF PP"
+
+        # config MCU_PERIPH_GPIO_PH1_MODE_AF_OD
+            # bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH1_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH1_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH1_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH1_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH1_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH1_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH1_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH1_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH1_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH1_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH1_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH1_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH1_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH1_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH1_AF
+        bool
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH1_MODE_AF_OD || MCU_PERIPH_GPIO_PH1_MODE_AF_PP
+        help
+            PH1 GPIO AF
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH1_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH1_AF0
+        default 1 if MCU_PERIPH_GPIO_PH1_AF1
+        default 2 if MCU_PERIPH_GPIO_PH1_AF2
+        default 3 if MCU_PERIPH_GPIO_PH1_AF3
+        default 4 if MCU_PERIPH_GPIO_PH1_AF4
+        default 5 if MCU_PERIPH_GPIO_PH1_AF5
+        default 6 if MCU_PERIPH_GPIO_PH1_AF6
+        default 7 if MCU_PERIPH_GPIO_PH1_AF7
+        default 8 if MCU_PERIPH_GPIO_PH1_AF8
+        default 9 if MCU_PERIPH_GPIO_PH1_AF9
+        default 10 if MCU_PERIPH_GPIO_PH1_AF10
+        default 11 if MCU_PERIPH_GPIO_PH1_AF11
+        default 12 if MCU_PERIPH_GPIO_PH1_AF12
+        default 13 if MCU_PERIPH_GPIO_PH1_AF13
+        default 14 if MCU_PERIPH_GPIO_PH1_AF14
+        default 15 if MCU_PERIPH_GPIO_PH1_AF15
+
+    choice MCU_PERIPH_GPIO_PH1_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH1_PULLNONE
+        help
+            PH1 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH1_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH1_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH1_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH1_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH1_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH1_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH1_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH1_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH1_SPHED_FREQ_LOW
+        help
+            PH1 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH1_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH1_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH1_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH1_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH1_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH1_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH1_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH1_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH1_SPHED_FREQ_VERY_HIGH
+endif
+
+# PH2
+menuconfig MCU_PERIPH_GPIO_PH2
+    bool "PH2"
+
+if MCU_PERIPH_GPIO_PH2
+    choice MCU_PERIPH_GPIO_PH2_MODE
+        prompt "Mode"
+        help
+            PH2 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH2_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH2_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH2_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH2_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH2_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH2_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH2_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH2_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH2_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH2_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH2_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH2_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH2_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH2_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH2_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH2_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH2_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH2_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH2_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH2_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH2_MODE_AF_OD || MCU_PERIPH_GPIO_PH2_MODE_AF_PP
+        help
+            PH2 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH2_AF11
+            bool "ETH_MII_CRS"
+
+        config MCU_PERIPH_GPIO_PH2_AF12
+            bool "FMC_SDCKE0"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH2_AF14
+            bool "LCD_R0"
+            depends on MCU_SERIES_STM32F429xx
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH2_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH2_AF0
+        default 1 if MCU_PERIPH_GPIO_PH2_AF1
+        default 2 if MCU_PERIPH_GPIO_PH2_AF2
+        default 3 if MCU_PERIPH_GPIO_PH2_AF3
+        default 4 if MCU_PERIPH_GPIO_PH2_AF4
+        default 5 if MCU_PERIPH_GPIO_PH2_AF5
+        default 6 if MCU_PERIPH_GPIO_PH2_AF6
+        default 7 if MCU_PERIPH_GPIO_PH2_AF7
+        default 8 if MCU_PERIPH_GPIO_PH2_AF8
+        default 9 if MCU_PERIPH_GPIO_PH2_AF9
+        default 10 if MCU_PERIPH_GPIO_PH2_AF10
+        default 11 if MCU_PERIPH_GPIO_PH2_AF11
+        default 12 if MCU_PERIPH_GPIO_PH2_AF12
+        default 13 if MCU_PERIPH_GPIO_PH2_AF13
+        default 14 if MCU_PERIPH_GPIO_PH2_AF14
+        default 15 if MCU_PERIPH_GPIO_PH2_AF15
+
+    choice MCU_PERIPH_GPIO_PH2_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH2_PULLNONE
+        help
+            PH2 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH2_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH2_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH2_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH2_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH2_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH2_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH2_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH2_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH2_SPHED_FREQ_LOW
+        help
+            PH2 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH2_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH2_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH2_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH2_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH2_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH2_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH2_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH2_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH2_SPHED_FREQ_VERY_HIGH
+endif
+
+# PH3
+menuconfig MCU_PERIPH_GPIO_PH3
+    bool "PH3"
+
+if MCU_PERIPH_GPIO_PH3
+    choice MCU_PERIPH_GPIO_PH3_MODE
+        prompt "Mode"
+        help
+            PH3 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH3_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH3_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH3_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH3_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH3_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH3_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH3_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH3_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH3_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH3_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH3_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH3_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH3_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH3_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH3_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH3_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH3_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH3_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH3_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH3_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH3_MODE_AF_OD || MCU_PERIPH_GPIO_PH3_MODE_AF_PP
+        help
+            PH3 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH3_AF11
+            bool "ETH_MII_COL"
+
+        config MCU_PERIPH_GPIO_PH3_AF12
+            bool "FMC_SDNE0"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH3_AF14
+            bool "LCD_R1"
+            depends on MCU_SERIES_STM32F429xx
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH3_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH3_AF0
+        default 1 if MCU_PERIPH_GPIO_PH3_AF1
+        default 2 if MCU_PERIPH_GPIO_PH3_AF2
+        default 3 if MCU_PERIPH_GPIO_PH3_AF3
+        default 4 if MCU_PERIPH_GPIO_PH3_AF4
+        default 5 if MCU_PERIPH_GPIO_PH3_AF5
+        default 6 if MCU_PERIPH_GPIO_PH3_AF6
+        default 7 if MCU_PERIPH_GPIO_PH3_AF7
+        default 8 if MCU_PERIPH_GPIO_PH3_AF8
+        default 9 if MCU_PERIPH_GPIO_PH3_AF9
+        default 10 if MCU_PERIPH_GPIO_PH3_AF10
+        default 11 if MCU_PERIPH_GPIO_PH3_AF11
+        default 12 if MCU_PERIPH_GPIO_PH3_AF12
+        default 13 if MCU_PERIPH_GPIO_PH3_AF13
+        default 14 if MCU_PERIPH_GPIO_PH3_AF14
+        default 15 if MCU_PERIPH_GPIO_PH3_AF15
+
+    choice MCU_PERIPH_GPIO_PH3_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH3_PULLNONE
+        help
+            PH3 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH3_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH3_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH3_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH3_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH3_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH3_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH3_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH3_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH3_SPHED_FREQ_LOW
+        help
+            PH3 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH3_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH3_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH3_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH3_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH3_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH3_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH3_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH3_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH3_SPHED_FREQ_VERY_HIGH
+endif
+
+# PH4
+menuconfig MCU_PERIPH_GPIO_PH4
+    bool "PH4"
+
+if MCU_PERIPH_GPIO_PH4
+    choice MCU_PERIPH_GPIO_PH4_MODE
+        prompt "Mode"
+        help
+            PH4 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH4_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH4_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH4_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH4_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH4_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH4_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH4_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH4_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH4_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH4_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH4_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH4_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH4_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH4_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH4_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH4_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH4_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH4_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH4_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH4_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH4_MODE_AF_OD || MCU_PERIPH_GPIO_PH4_MODE_AF_PP
+        help
+            PH4 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH4_AF4
+            bool "I2C2_SCL"
+
+        config MCU_PERIPH_GPIO_PH4_AF10
+            bool "OTG_HS_ULPI_NXT"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH4_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH4_AF0
+        default 1 if MCU_PERIPH_GPIO_PH4_AF1
+        default 2 if MCU_PERIPH_GPIO_PH4_AF2
+        default 3 if MCU_PERIPH_GPIO_PH4_AF3
+        default 4 if MCU_PERIPH_GPIO_PH4_AF4
+        default 5 if MCU_PERIPH_GPIO_PH4_AF5
+        default 6 if MCU_PERIPH_GPIO_PH4_AF6
+        default 7 if MCU_PERIPH_GPIO_PH4_AF7
+        default 8 if MCU_PERIPH_GPIO_PH4_AF8
+        default 9 if MCU_PERIPH_GPIO_PH4_AF9
+        default 10 if MCU_PERIPH_GPIO_PH4_AF10
+        default 11 if MCU_PERIPH_GPIO_PH4_AF11
+        default 12 if MCU_PERIPH_GPIO_PH4_AF12
+        default 13 if MCU_PERIPH_GPIO_PH4_AF13
+        default 14 if MCU_PERIPH_GPIO_PH4_AF14
+        default 15 if MCU_PERIPH_GPIO_PH4_AF15
+
+    choice MCU_PERIPH_GPIO_PH4_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH4_PULLNONE
+        help
+            PH4 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH4_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH4_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH4_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH4_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH4_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH4_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH4_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH4_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH4_SPHED_FREQ_LOW
+        help
+            PH4 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH4_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH4_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH4_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH4_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH4_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH4_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH4_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH4_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH4_SPHED_FREQ_VERY_HIGH
+endif
+
+
+# PH5
+menuconfig MCU_PERIPH_GPIO_PH5
+    bool "PH5"
+
+if MCU_PERIPH_GPIO_PH5
+    choice MCU_PERIPH_GPIO_PH5_MODE
+        prompt "Mode"
+        help
+            PH5 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH5_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH5_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH5_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH5_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH5_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH5_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH5_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH5_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH5_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH5_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH5_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH5_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH5_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH5_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH5_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH5_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH5_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH5_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH5_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH5_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH5_MODE_AF_OD || MCU_PERIPH_GPIO_PH5_MODE_AF_PP
+        help
+            PH5 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH5_AF4
+            bool "I2C2_SDA"
+
+        config MCU_PERIPH_GPIO_PH5_AF5
+            bool "SPI5_NSS"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH5_AF12
+            bool "FMC_SDNWE"
+            depends on MCU_SERIES_STM32F429xx
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH5_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH5_AF0
+        default 1 if MCU_PERIPH_GPIO_PH5_AF1
+        default 2 if MCU_PERIPH_GPIO_PH5_AF2
+        default 3 if MCU_PERIPH_GPIO_PH5_AF3
+        default 4 if MCU_PERIPH_GPIO_PH5_AF4
+        default 5 if MCU_PERIPH_GPIO_PH5_AF5
+        default 6 if MCU_PERIPH_GPIO_PH5_AF6
+        default 7 if MCU_PERIPH_GPIO_PH5_AF7
+        default 8 if MCU_PERIPH_GPIO_PH5_AF8
+        default 9 if MCU_PERIPH_GPIO_PH5_AF9
+        default 10 if MCU_PERIPH_GPIO_PH5_AF10
+        default 11 if MCU_PERIPH_GPIO_PH5_AF11
+        default 12 if MCU_PERIPH_GPIO_PH5_AF12
+        default 13 if MCU_PERIPH_GPIO_PH5_AF13
+        default 14 if MCU_PERIPH_GPIO_PH5_AF14
+        default 15 if MCU_PERIPH_GPIO_PH5_AF15
+
+    choice MCU_PERIPH_GPIO_PH5_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH5_PULLNONE
+        help
+            PH5 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH5_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH5_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH5_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH5_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH5_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH5_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH5_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH5_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH5_SPHED_FREQ_LOW
+        help
+            PH5 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH5_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH5_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH5_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH5_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH5_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH5_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH5_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH5_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH5_SPHED_FREQ_VERY_HIGH
+endif
+
+
+# PH6
+menuconfig MCU_PERIPH_GPIO_PH6
+    bool "PH6"
+
+if MCU_PERIPH_GPIO_PH6
+    choice MCU_PERIPH_GPIO_PH6_MODE
+        prompt "Mode"
+        help
+            PH6 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH6_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH6_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH6_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH6_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH6_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH6_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH6_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH6_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH6_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH6_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH6_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH6_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH6_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH6_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH6_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH6_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH6_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH6_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH6_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH6_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH6_MODE_AF_OD || MCU_PERIPH_GPIO_PH6_MODE_AF_PP
+        help
+            PH6 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH6_AF4
+            bool "I2C2_SMBA"
+
+        config MCU_PERIPH_GPIO_PH6_AF5
+            bool "SPI5_SCK"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH6_AF9
+            bool "TIM12_CH1"
+
+        config MCU_PERIPH_GPIO_PH6_AF11
+            bool "ETH_MII_RXD2"
+            depends on STM32F405xx || STM32F407xx
+
+        config MCU_PERIPH_GPIO_PH6_AF12
+            bool "FMC_SDNE1"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH6_AF13
+            bool "DCMI_D8"
+            depends on MCU_SERIES_STM32F429xx
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH6_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH6_AF0
+        default 1 if MCU_PERIPH_GPIO_PH6_AF1
+        default 2 if MCU_PERIPH_GPIO_PH6_AF2
+        default 3 if MCU_PERIPH_GPIO_PH6_AF3
+        default 4 if MCU_PERIPH_GPIO_PH6_AF4
+        default 5 if MCU_PERIPH_GPIO_PH6_AF5
+        default 6 if MCU_PERIPH_GPIO_PH6_AF6
+        default 7 if MCU_PERIPH_GPIO_PH6_AF7
+        default 8 if MCU_PERIPH_GPIO_PH6_AF8
+        default 9 if MCU_PERIPH_GPIO_PH6_AF9
+        default 10 if MCU_PERIPH_GPIO_PH6_AF10
+        default 11 if MCU_PERIPH_GPIO_PH6_AF11
+        default 12 if MCU_PERIPH_GPIO_PH6_AF12
+        default 13 if MCU_PERIPH_GPIO_PH6_AF13
+        default 14 if MCU_PERIPH_GPIO_PH6_AF14
+        default 15 if MCU_PERIPH_GPIO_PH6_AF15
+
+    choice MCU_PERIPH_GPIO_PH6_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH6_PULLNONE
+        help
+            PH6 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH6_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH6_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH6_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH6_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH6_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH6_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH6_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH6_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH6_SPHED_FREQ_LOW
+        help
+            PH6 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH6_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH6_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH6_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH6_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH6_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH6_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH6_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH6_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH6_SPHED_FREQ_VERY_HIGH
+endif
+
+# PH7
+menuconfig MCU_PERIPH_GPIO_PH7
+    bool "PH7"
+
+if MCU_PERIPH_GPIO_PH7
+    choice MCU_PERIPH_GPIO_PH7_MODE
+        prompt "Mode"
+        help
+            PH7 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH7_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH7_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH7_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH7_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH7_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH7_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH7_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH7_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH7_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH7_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH7_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH7_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH7_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH7_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH7_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH7_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH7_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH7_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH7_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH7_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH7_MODE_AF_OD || MCU_PERIPH_GPIO_PH7_MODE_AF_PP
+        help
+            PH7 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH7_AF4
+            bool "I2C3_SCL"
+
+        config MCU_PERIPH_GPIO_PH7_AF5
+            bool "SPI5_MISO"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH7_AF11
+            bool "ETH_MII_RXD3"
+
+        config MCU_PERIPH_GPIO_PH7_AF12
+            bool "FMC_SDCKE1"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH7_AF13
+            bool "DCMI_D9"
+            depends on MCU_SERIES_STM32F429xx
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH7_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH7_AF0
+        default 1 if MCU_PERIPH_GPIO_PH7_AF1
+        default 2 if MCU_PERIPH_GPIO_PH7_AF2
+        default 3 if MCU_PERIPH_GPIO_PH7_AF3
+        default 4 if MCU_PERIPH_GPIO_PH7_AF4
+        default 5 if MCU_PERIPH_GPIO_PH7_AF5
+        default 6 if MCU_PERIPH_GPIO_PH7_AF6
+        default 7 if MCU_PERIPH_GPIO_PH7_AF7
+        default 8 if MCU_PERIPH_GPIO_PH7_AF8
+        default 9 if MCU_PERIPH_GPIO_PH7_AF9
+        default 10 if MCU_PERIPH_GPIO_PH7_AF10
+        default 11 if MCU_PERIPH_GPIO_PH7_AF11
+        default 12 if MCU_PERIPH_GPIO_PH7_AF12
+        default 13 if MCU_PERIPH_GPIO_PH7_AF13
+        default 14 if MCU_PERIPH_GPIO_PH7_AF14
+        default 15 if MCU_PERIPH_GPIO_PH7_AF15
+
+    choice MCU_PERIPH_GPIO_PH7_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH7_PULLNONE
+        help
+            PH7 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH7_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH7_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH7_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH7_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH7_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH7_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH7_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH7_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH7_SPHED_FREQ_LOW
+        help
+            PH7 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH7_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH7_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH7_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH7_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH7_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH7_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH7_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH7_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH7_SPHED_FREQ_VERY_HIGH
+endif
+
+# PH8
+menuconfig MCU_PERIPH_GPIO_PH8
+    bool "PH8"
+
+if MCU_PERIPH_GPIO_PH8
+    choice MCU_PERIPH_GPIO_PH8_MODE
+        prompt "Mode"
+        help
+            PH8 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH8_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH8_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH8_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH8_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH8_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH8_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH8_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH8_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH8_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH8_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH8_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH8_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH8_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH8_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH8_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH8_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH8_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH8_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH8_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH8_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH8_MODE_AF_OD || MCU_PERIPH_GPIO_PH8_MODE_AF_PP
+        help
+            PH8 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH8_AF4
+            bool "I2C3_SDA"
+
+        config MCU_PERIPH_GPIO_PH8_AF12
+            bool "FMC_D16"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH8_AF13
+            bool "DCMI_HSYNC"
+
+        config MCU_PERIPH_GPIO_PH8_AF14
+            bool "LCD_R2"
+            depends on MCU_SERIES_STM32F429xx
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH8_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH8_AF0
+        default 1 if MCU_PERIPH_GPIO_PH8_AF1
+        default 2 if MCU_PERIPH_GPIO_PH8_AF2
+        default 3 if MCU_PERIPH_GPIO_PH8_AF3
+        default 4 if MCU_PERIPH_GPIO_PH8_AF4
+        default 5 if MCU_PERIPH_GPIO_PH8_AF5
+        default 6 if MCU_PERIPH_GPIO_PH8_AF6
+        default 7 if MCU_PERIPH_GPIO_PH8_AF7
+        default 8 if MCU_PERIPH_GPIO_PH8_AF8
+        default 9 if MCU_PERIPH_GPIO_PH8_AF9
+        default 10 if MCU_PERIPH_GPIO_PH8_AF10
+        default 11 if MCU_PERIPH_GPIO_PH8_AF11
+        default 12 if MCU_PERIPH_GPIO_PH8_AF12
+        default 13 if MCU_PERIPH_GPIO_PH8_AF13
+        default 14 if MCU_PERIPH_GPIO_PH8_AF14
+        default 15 if MCU_PERIPH_GPIO_PH8_AF15
+
+    choice MCU_PERIPH_GPIO_PH8_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH8_PULLNONE
+        help
+            PH8 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH8_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH8_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH8_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH8_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH8_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH8_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH8_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH8_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH8_SPHED_FREQ_LOW
+        help
+            PH8 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH8_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH8_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH8_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH8_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH8_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH8_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH8_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH8_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH8_SPHED_FREQ_VERY_HIGH
+endif
+
+# PH9
+menuconfig MCU_PERIPH_GPIO_PH9
+    bool "PH9"
+
+if MCU_PERIPH_GPIO_PH9
+    choice MCU_PERIPH_GPIO_PH9_MODE
+        prompt "Mode"
+        help
+            PH9 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH9_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH9_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH9_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH9_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH9_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH9_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH9_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH9_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH9_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH9_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH9_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH9_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH9_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH9_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH9_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH9_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH9_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH9_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH9_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH9_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH9_MODE_AF_OD || MCU_PERIPH_GPIO_PH9_MODE_AF_PP
+        help
+            PH9 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH9_AF4
+            bool "I2C3_SMBA"
+
+        config MCU_PERIPH_GPIO_PH9_AF9
+            bool "TIM12_CH2"
+
+        config MCU_PERIPH_GPIO_PH9_AF12
+            bool "FMC_D17"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH9_AF13
+            bool "DCMI_D0"
+
+        config MCU_PERIPH_GPIO_PH9_AF14
+            bool "LCD_R3"
+            depends on MCU_SERIES_STM32F429xx
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH9_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH9_AF0
+        default 1 if MCU_PERIPH_GPIO_PH9_AF1
+        default 2 if MCU_PERIPH_GPIO_PH9_AF2
+        default 3 if MCU_PERIPH_GPIO_PH9_AF3
+        default 4 if MCU_PERIPH_GPIO_PH9_AF4
+        default 5 if MCU_PERIPH_GPIO_PH9_AF5
+        default 6 if MCU_PERIPH_GPIO_PH9_AF6
+        default 7 if MCU_PERIPH_GPIO_PH9_AF7
+        default 8 if MCU_PERIPH_GPIO_PH9_AF8
+        default 9 if MCU_PERIPH_GPIO_PH9_AF9
+        default 10 if MCU_PERIPH_GPIO_PH9_AF10
+        default 11 if MCU_PERIPH_GPIO_PH9_AF11
+        default 12 if MCU_PERIPH_GPIO_PH9_AF12
+        default 13 if MCU_PERIPH_GPIO_PH9_AF13
+        default 14 if MCU_PERIPH_GPIO_PH9_AF14
+        default 15 if MCU_PERIPH_GPIO_PH9_AF15
+
+    choice MCU_PERIPH_GPIO_PH9_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH9_PULLNONE
+        help
+            PH9 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH9_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH9_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH9_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH9_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH9_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH9_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH9_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH9_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH9_SPHED_FREQ_LOW
+        help
+            PH9 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH9_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH9_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH9_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH9_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH9_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH9_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH9_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH9_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH9_SPHED_FREQ_VERY_HIGH
+endif
+
+# PH10
+menuconfig MCU_PERIPH_GPIO_PH10
+    bool "PH10"
+
+if MCU_PERIPH_GPIO_PH10
+    choice MCU_PERIPH_GPIO_PH10_MODE
+        prompt "Mode"
+        help
+            PH10 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH10_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH10_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH10_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH10_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH10_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH10_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH10_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH10_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH10_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH10_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH10_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH10_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH10_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH10_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH10_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH10_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH10_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH10_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH10_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH10_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH10_MODE_AF_OD || MCU_PERIPH_GPIO_PH10_MODE_AF_PP
+        help
+            PH10 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH10_AF2
+            bool "TIM5_CH1"
+
+        config MCU_PERIPH_GPIO_PH10_AF12
+            bool "FMC_D18"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH10_AF13
+            bool "DCMI_D1"
+
+        config MCU_PERIPH_GPIO_PH10_AF14
+            bool "LCD_R4"
+            depends on MCU_SERIES_STM32F429xx
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH10_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH10_AF0
+        default 1 if MCU_PERIPH_GPIO_PH10_AF1
+        default 2 if MCU_PERIPH_GPIO_PH10_AF2
+        default 3 if MCU_PERIPH_GPIO_PH10_AF3
+        default 4 if MCU_PERIPH_GPIO_PH10_AF4
+        default 5 if MCU_PERIPH_GPIO_PH10_AF5
+        default 6 if MCU_PERIPH_GPIO_PH10_AF6
+        default 7 if MCU_PERIPH_GPIO_PH10_AF7
+        default 8 if MCU_PERIPH_GPIO_PH10_AF8
+        default 9 if MCU_PERIPH_GPIO_PH10_AF9
+        default 10 if MCU_PERIPH_GPIO_PH10_AF10
+        default 11 if MCU_PERIPH_GPIO_PH10_AF11
+        default 12 if MCU_PERIPH_GPIO_PH10_AF12
+        default 13 if MCU_PERIPH_GPIO_PH10_AF13
+        default 14 if MCU_PERIPH_GPIO_PH10_AF14
+        default 15 if MCU_PERIPH_GPIO_PH10_AF15
+
+    choice MCU_PERIPH_GPIO_PH10_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH10_PULLNONE
+        help
+            PH10 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH10_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH10_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH10_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH10_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH10_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH10_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH10_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH10_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH10_SPHED_FREQ_LOW
+        help
+            PH10 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH10_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH10_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH10_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH10_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH10_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH10_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH10_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH10_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH10_SPHED_FREQ_VERY_HIGH
+endif
+
+# PH11
+menuconfig MCU_PERIPH_GPIO_PH11
+    bool "PH11"
+
+if MCU_PERIPH_GPIO_PH11
+    choice MCU_PERIPH_GPIO_PH11_MODE
+        prompt "Mode"
+        help
+            PH11 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH11_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH11_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH11_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH11_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH11_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH11_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH11_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH11_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH11_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH11_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH11_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH11_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH11_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH11_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH11_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH11_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH11_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH11_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH11_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH11_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH11_MODE_AF_OD || MCU_PERIPH_GPIO_PH11_MODE_AF_PP
+        help
+            PH11 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH11_AF2
+            bool "TIM5_CH2"
+
+        config MCU_PERIPH_GPIO_PH11_AF12
+            bool "FMC_D19"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH11_AF13
+            bool "DCMI_D2"
+
+        config MCU_PERIPH_GPIO_PH11_AF14
+            bool "LCD_R5"
+            depends on MCU_SERIES_STM32F429xx
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH11_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH11_AF0
+        default 1 if MCU_PERIPH_GPIO_PH11_AF1
+        default 2 if MCU_PERIPH_GPIO_PH11_AF2
+        default 3 if MCU_PERIPH_GPIO_PH11_AF3
+        default 4 if MCU_PERIPH_GPIO_PH11_AF4
+        default 5 if MCU_PERIPH_GPIO_PH11_AF5
+        default 6 if MCU_PERIPH_GPIO_PH11_AF6
+        default 7 if MCU_PERIPH_GPIO_PH11_AF7
+        default 8 if MCU_PERIPH_GPIO_PH11_AF8
+        default 9 if MCU_PERIPH_GPIO_PH11_AF9
+        default 10 if MCU_PERIPH_GPIO_PH11_AF10
+        default 11 if MCU_PERIPH_GPIO_PH11_AF11
+        default 12 if MCU_PERIPH_GPIO_PH11_AF12
+        default 13 if MCU_PERIPH_GPIO_PH11_AF13
+        default 14 if MCU_PERIPH_GPIO_PH11_AF14
+        default 15 if MCU_PERIPH_GPIO_PH11_AF15
+
+    choice MCU_PERIPH_GPIO_PH11_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH11_PULLNONE
+        help
+            PH11 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH11_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH11_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH11_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH11_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH11_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH11_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH11_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH11_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH11_SPHED_FREQ_LOW
+        help
+            PH11 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH11_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH11_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH11_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH11_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH11_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH11_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH11_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH11_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH11_SPHED_FREQ_VERY_HIGH
+endif
+
+# PH12
+menuconfig MCU_PERIPH_GPIO_PH12
+    bool "PH12"
+
+if MCU_PERIPH_GPIO_PH12
+    choice MCU_PERIPH_GPIO_PH12_MODE
+        prompt "Mode"
+        help
+            PH12 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH12_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH12_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH12_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH12_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH12_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH12_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH12_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH12_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH12_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH12_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH12_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH12_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH12_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH12_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH12_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH12_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH12_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH12_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH12_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH12_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH12_MODE_AF_OD || MCU_PERIPH_GPIO_PH12_MODE_AF_PP
+        help
+            PH12 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH12_AF2
+            bool "TIM5_CH3"
+
+        config MCU_PERIPH_GPIO_PH12_AF12
+            bool "FMC_D20"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH12_AF13
+            bool "DCMI_D3"
+
+        config MCU_PERIPH_GPIO_PH12_AF14
+            bool "LCD_R6"
+            depends on MCU_SERIES_STM32F429xx
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH12_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH12_AF0
+        default 1 if MCU_PERIPH_GPIO_PH12_AF1
+        default 2 if MCU_PERIPH_GPIO_PH12_AF2
+        default 3 if MCU_PERIPH_GPIO_PH12_AF3
+        default 4 if MCU_PERIPH_GPIO_PH12_AF4
+        default 5 if MCU_PERIPH_GPIO_PH12_AF5
+        default 6 if MCU_PERIPH_GPIO_PH12_AF6
+        default 7 if MCU_PERIPH_GPIO_PH12_AF7
+        default 8 if MCU_PERIPH_GPIO_PH12_AF8
+        default 9 if MCU_PERIPH_GPIO_PH12_AF9
+        default 10 if MCU_PERIPH_GPIO_PH12_AF10
+        default 11 if MCU_PERIPH_GPIO_PH12_AF11
+        default 12 if MCU_PERIPH_GPIO_PH12_AF12
+        default 13 if MCU_PERIPH_GPIO_PH12_AF13
+        default 14 if MCU_PERIPH_GPIO_PH12_AF14
+        default 15 if MCU_PERIPH_GPIO_PH12_AF15
+
+    choice MCU_PERIPH_GPIO_PH12_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH12_PULLNONE
+        help
+            PH12 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH12_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH12_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH12_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH12_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH12_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH12_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH12_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH12_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH12_SPHED_FREQ_LOW
+        help
+            PH12 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH12_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH12_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH12_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH12_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH12_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH12_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH12_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH12_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH12_SPHED_FREQ_VERY_HIGH
+endif
+
+# PH13
+menuconfig MCU_PERIPH_GPIO_PH13
+    bool "PH13"
+
+if MCU_PERIPH_GPIO_PH13
+    choice MCU_PERIPH_GPIO_PH13_MODE
+        prompt "Mode"
+        help
+            PH13 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH13_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH13_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH13_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH13_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH13_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH13_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH13_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH13_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH13_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH13_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH13_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH13_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH13_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH13_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH13_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH13_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH13_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH13_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH13_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH13_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH13_MODE_AF_OD || MCU_PERIPH_GPIO_PH13_MODE_AF_PP
+        help
+            PH13 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH13_AF3
+            bool "TIM8_CH1N"
+
+        config MCU_PERIPH_GPIO_PH13_AF9
+            bool "CAN1_TX"
+
+        config MCU_PERIPH_GPIO_PH13_AF12
+            bool "FMC_D21"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH13_AF14
+            bool "LCD_G2"
+            depends on MCU_SERIES_STM32F429xx
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH13_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH13_AF0
+        default 1 if MCU_PERIPH_GPIO_PH13_AF1
+        default 2 if MCU_PERIPH_GPIO_PH13_AF2
+        default 3 if MCU_PERIPH_GPIO_PH13_AF3
+        default 4 if MCU_PERIPH_GPIO_PH13_AF4
+        default 5 if MCU_PERIPH_GPIO_PH13_AF5
+        default 6 if MCU_PERIPH_GPIO_PH13_AF6
+        default 7 if MCU_PERIPH_GPIO_PH13_AF7
+        default 8 if MCU_PERIPH_GPIO_PH13_AF8
+        default 9 if MCU_PERIPH_GPIO_PH13_AF9
+        default 10 if MCU_PERIPH_GPIO_PH13_AF10
+        default 11 if MCU_PERIPH_GPIO_PH13_AF11
+        default 12 if MCU_PERIPH_GPIO_PH13_AF12
+        default 13 if MCU_PERIPH_GPIO_PH13_AF13
+        default 14 if MCU_PERIPH_GPIO_PH13_AF14
+        default 15 if MCU_PERIPH_GPIO_PH13_AF15
+
+    choice MCU_PERIPH_GPIO_PH13_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH13_PULLNONE
+        help
+            PH13 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH13_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH13_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH13_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH13_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH13_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH13_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH13_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH13_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH13_SPHED_FREQ_LOW
+        help
+            PH13 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH13_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH13_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH13_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH13_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH13_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH13_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH13_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH13_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH13_SPHED_FREQ_VERY_HIGH
+endif
+
+# PH14
+menuconfig MCU_PERIPH_GPIO_PH14
+    bool "PH14"
+
+if MCU_PERIPH_GPIO_PH14
+    choice MCU_PERIPH_GPIO_PH14_MODE
+        prompt "Mode"
+        help
+            PH14 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH14_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH14_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH14_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH14_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH14_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH14_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH14_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH14_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH14_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH14_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH14_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH14_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH14_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH14_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH14_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH14_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH14_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH14_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH14_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH14_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH14_MODE_AF_OD || MCU_PERIPH_GPIO_PH14_MODE_AF_PP
+        help
+            PH14 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH14_AF3
+            bool "TIM8_CH2N"
+
+        config MCU_PERIPH_GPIO_PH14_AF12
+            bool "FMC_D22"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH14_AF13
+            bool "DCMI_D4"
+
+        config MCU_PERIPH_GPIO_PH14_AF14
+            bool "LCD_G3"
+            depends on MCU_SERIES_STM32F429xx
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH14_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH14_AF0
+        default 1 if MCU_PERIPH_GPIO_PH14_AF1
+        default 2 if MCU_PERIPH_GPIO_PH14_AF2
+        default 3 if MCU_PERIPH_GPIO_PH14_AF3
+        default 4 if MCU_PERIPH_GPIO_PH14_AF4
+        default 5 if MCU_PERIPH_GPIO_PH14_AF5
+        default 6 if MCU_PERIPH_GPIO_PH14_AF6
+        default 7 if MCU_PERIPH_GPIO_PH14_AF7
+        default 8 if MCU_PERIPH_GPIO_PH14_AF8
+        default 9 if MCU_PERIPH_GPIO_PH14_AF9
+        default 10 if MCU_PERIPH_GPIO_PH14_AF10
+        default 11 if MCU_PERIPH_GPIO_PH14_AF11
+        default 12 if MCU_PERIPH_GPIO_PH14_AF12
+        default 13 if MCU_PERIPH_GPIO_PH14_AF13
+        default 14 if MCU_PERIPH_GPIO_PH14_AF14
+        default 15 if MCU_PERIPH_GPIO_PH14_AF15
+
+    choice MCU_PERIPH_GPIO_PH14_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH14_PULLNONE
+        help
+            PH14 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH14_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH14_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH14_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH14_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH14_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH14_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH14_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH14_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH14_SPHED_FREQ_LOW
+        help
+            PH14 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH14_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH14_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH14_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH14_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH14_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH14_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH14_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH14_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH14_SPHED_FREQ_VERY_HIGH
+endif
+
+# PH15
+menuconfig MCU_PERIPH_GPIO_PH15
+    bool "PH15"
+
+if MCU_PERIPH_GPIO_PH15
+    choice MCU_PERIPH_GPIO_PH15_MODE
+        prompt "Mode"
+        help
+            PH15 GPIO Mode
+
+        config MCU_PERIPH_GPIO_PH15_MODE_IN
+            bool "Input"
+
+        config MCU_PERIPH_GPIO_PH15_MODE_OUT_PP
+            bool "Output PP"
+
+        config MCU_PERIPH_GPIO_PH15_MODE_OUT_OD
+            bool "Output OD"
+
+        config MCU_PERIPH_GPIO_PH15_MODE_AF_PP
+            bool "AF PP"
+
+        config MCU_PERIPH_GPIO_PH15_MODE_AF_OD
+            bool "AF OD"
+
+        config MCU_PERIPH_GPIO_PH15_MODE_AN
+            bool "Analog"
+
+        config MCU_PERIPH_GPIO_PH15_MODE_IT_R
+            bool "IT Rising"
+
+        config MCU_PERIPH_GPIO_PH15_MODE_IT_F
+            bool "IT Falling"
+
+        config MCU_PERIPH_GPIO_PH15_MODE_IT_RF
+            bool "IT Rising/Falling"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH15_MODE
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH15_MODE_IN
+        default 0x00000001 if MCU_PERIPH_GPIO_PH15_MODE_OUT_PP
+        default 0x00000011 if MCU_PERIPH_GPIO_PH15_MODE_OUT_OD
+        default 0x00000002 if MCU_PERIPH_GPIO_PH15_MODE_AF_PP
+        default 0x00000012 if MCU_PERIPH_GPIO_PH15_MODE_AF_OD
+        default 0x00000003 if MCU_PERIPH_GPIO_PH15_MODE_AN
+        default 0x10110000 if MCU_PERIPH_GPIO_PH15_MODE_IT_R
+        default 0x10210000 if MCU_PERIPH_GPIO_PH15_MODE_IT_F
+        default 0x10310000 if MCU_PERIPH_GPIO_PH15_MODE_IT_RF
+
+    choice MCU_PERIPH_GPIO_PH15_AF
+        prompt "AF"
+        depends on MCU_PERIPH_GPIO_PH15_MODE_AF_OD || MCU_PERIPH_GPIO_PH15_MODE_AF_PP
+        help
+            PH15 GPIO AF
+
+        config MCU_PERIPH_GPIO_PH15_AF3
+            bool "TIM8_CH3N"
+
+        config MCU_PERIPH_GPIO_PH15_AF12
+            bool "FMC_D23"
+            depends on MCU_SERIES_STM32F429xx
+
+        config MCU_PERIPH_GPIO_PH15_AF13
+            bool "DCMI_D11"
+
+        config MCU_PERIPH_GPIO_PH15_AF14
+            bool "LCD_G4"
+            depends on MCU_SERIES_STM32F429xx
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH15_AF
+        int
+        default 0 if MCU_PERIPH_GPIO_PH15_AF0
+        default 1 if MCU_PERIPH_GPIO_PH15_AF1
+        default 2 if MCU_PERIPH_GPIO_PH15_AF2
+        default 3 if MCU_PERIPH_GPIO_PH15_AF3
+        default 4 if MCU_PERIPH_GPIO_PH15_AF4
+        default 5 if MCU_PERIPH_GPIO_PH15_AF5
+        default 6 if MCU_PERIPH_GPIO_PH15_AF6
+        default 7 if MCU_PERIPH_GPIO_PH15_AF7
+        default 8 if MCU_PERIPH_GPIO_PH15_AF8
+        default 9 if MCU_PERIPH_GPIO_PH15_AF9
+        default 10 if MCU_PERIPH_GPIO_PH15_AF10
+        default 11 if MCU_PERIPH_GPIO_PH15_AF11
+        default 12 if MCU_PERIPH_GPIO_PH15_AF12
+        default 13 if MCU_PERIPH_GPIO_PH15_AF13
+        default 14 if MCU_PERIPH_GPIO_PH15_AF14
+        default 15 if MCU_PERIPH_GPIO_PH15_AF15
+
+    choice MCU_PERIPH_GPIO_PH15_PULL
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH15_PULLNONE
+        help
+            PH15 GPIO Pull
+
+        config MCU_PERIPH_GPIO_PH15_PULLNONE
+            bool "No Pull-up/Pull-down"
+
+        config MCU_PERIPH_GPIO_PH15_PULLUP
+            bool "Pull up"
+
+        config MCU_PERIPH_GPIO_PH15_PULLDOWN
+            bool "Pull down"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH15_PULL
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH15_PULLNONE
+        default 0x00000001 if MCU_PERIPH_GPIO_PH15_PULLUP
+        default 0x00000002 if MCU_PERIPH_GPIO_PH15_PULLDOWN
+
+    choice MCU_PERIPH_GPIO_PH15_SPHED_FREQ
+        prompt "Mode"
+        default MCU_PERIPH_GPIO_PH15_SPHED_FREQ_LOW
+        help
+            PH15 GPIO Speed Frequency
+
+        config MCU_PERIPH_GPIO_PH15_SPHED_FREQ_LOW
+            bool "Low Speed (2MHz)"
+
+        config MCU_PERIPH_GPIO_PH15_SPHED_FREQ_MEDIUM
+            bool "Medium Speed (12.5MHz-50MHz)"
+
+        config MCU_PERIPH_GPIO_PH15_SPHED_FREQ_HIGH
+            bool "High Speed (25MHz-100MHz)"
+
+        config MCU_PERIPH_GPIO_PH15_SPHED_FREQ_VERY_HIGH
+            bool "Very High Speed (50MHz-200MHz)"
+    endchoice
+
+    config MCU_PERIPH_GPIO_PH15_SPHED_FREQ
+        hex
+        default 0x00000000 if MCU_PERIPH_GPIO_PH15_SPHED_FREQ_LOW
+        default 0x00000001 if MCU_PERIPH_GPIO_PH15_SPHED_FREQ_MEDIUM
+        default 0x00000002 if MCU_PERIPH_GPIO_PH15_SPHED_FREQ_HIGH
+        default 0x00000003 if MCU_PERIPH_GPIO_PH15_SPHED_FREQ_VERY_HIGH
+endif

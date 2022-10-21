@@ -2,11 +2,49 @@ menuconfig MCU_PERIPH_GPIO
     bool "GPIO"
 
 if MCU_PERIPH_GPIO
-menu "Port A"
-    source "kconfig/Kconfig.periph.f4x.gpioa"
-endmenu
+    menu "Port A"
+        source "kconfig/Kconfig.periph.f4x.gpioa"
+    endmenu
 
-menu "Port B"
-    source "kconfig/Kconfig.periph.f4x.gpiob"
-endmenu
+    menu "Port B"
+        source "kconfig/Kconfig.periph.f4x.gpiob"
+    endmenu
+
+    menu "Port C"
+        source "kconfig/Kconfig.periph.f4x.gpioc"
+    endmenu
+
+    menu "Port D"
+        source "kconfig/Kconfig.periph.f4x.gpiod"
+    endmenu
+
+    menu "Port E"
+        source "kconfig/Kconfig.periph.f4x.gpioe"
+    endmenu
+
+    menu "Port F"
+        source "kconfig/Kconfig.periph.f4x.gpiof"
+    endmenu
+
+    menu "Port G"
+        source "kconfig/Kconfig.periph.f4x.gpiog"
+    endmenu
+
+    menu "Port H"
+        source "kconfig/Kconfig.periph.f4x.gpioh"
+    endmenu
+
+    menu "Port I"
+        source "kconfig/Kconfig.periph.f4x.gpioi"
+    endmenu
+
+    if MCU_SERIES_STM32F429xx
+        menu "Port J"
+            source "kconfig/Kconfig.periph.f4x.gpioj"
+        endmenu
+
+        menu "Port J"
+            source "kconfig/Kconfig.periph.f4x.gpiok"
+        endmenu
+    endif
 endif
